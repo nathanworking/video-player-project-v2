@@ -1,0 +1,21 @@
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin standard-icon {
+  border: none;
+  color: transparent;
+  background-color: transparent;
+  transition: all .3s ease;
+  &:focus {
+    outline:none;
+  }
+}

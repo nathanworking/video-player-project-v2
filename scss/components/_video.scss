@@ -1,0 +1,160 @@
+// Controls
+#video {
+  width: 100%;
+}
+
+#video-controls {
+  position: relative;
+  height: 65px;
+  padding: 15px 10px 0 10px;
+  z-index: 1;
+  top: -4.70em;
+  opacity: 0;
+  transition: opacity .3s ease .3s;
+  background: linear-gradient(transparent 20%, rgba(0, 0, 0, 0.3) 80%);
+}
+.video-box{
+  transition-duration: 2s;
+  transition-duration: 2s;
+  &:hover #seek-box {
+    top: -5.6em;
+  }
+  &:hover #video-controls {
+    opacity: 1;
+  }
+}
+
+// Left Side Controls
+  #play-pause,
+  #video-controls span {
+    float: left;
+    display: inline;
+    margin: 5px;
+    color: $site-base-light-color;
+  }
+  .play-button {
+    background-image: url(../img/icons/play-icon.svg);
+    width: 21px;
+    height: 24px;
+    @include standard-icon;
+  }
+  .pause-button {
+    background-image: url(../img/icons/pause-icon.svg);
+    width: 21px;
+    height: 24px;
+    @include standard-icon;
+  }
+
+// Right Side Controls
+  #mute,
+  #full-screen {
+    float: right;
+    margin: 5px;
+  }
+  .volume-on {
+    background-image: url(../img/icons/volume-on-icon.png);
+    width: 22px;
+    height: 22px;
+    @include standard-icon;
+  }
+  .volume-off {
+    background-image: url(../img/icons/volume-off-icon.png);
+    width: 22px;
+    height: 22px;
+    @include standard-icon;
+  }
+  .fullscreen {
+    background-image: url(../img/icons/fullscreen-icon.png);
+    width: 22px;
+    height: 22px;
+    float: right;
+    margin: 5px 15px 0 15px;
+    @include standard-icon;
+  }
+
+// Lives behind the Playback bar, also includes Playback bar
+#seek-box {
+  position: relative;
+  z-index: 20;
+  top: -1.25em;
+  transition: all .3s ease-in-out;
+  height: 0.3em;
+  width: 98%;
+  margin: 0 auto;
+}
+    // Background in Firefox because there is no progress bar class
+    @-moz-document url-prefix() {
+        #seek-box {
+          background-color: rgba(255, 255, 255, 0.1);
+        }
+        #progress {
+          top: -2.6em;
+        }
+    }
+
+// Playback Bar
+progress {
+  display: inline;
+  position: relative;
+  height: 0.3em;
+  width: 100%;
+  top: -0.1em;
+  z-index: 10;
+}
+progress[value]::-moz-progress-bar {
+  background-color: #F09C37;
+  height: 0.3em;
+}
+progress#buffer[value]::-moz-progress-bar {
+  background-color: rgba(240, 156, 55, 0.4);
+}
+
+// Fix for the broken calculation of progress movement (click didn't work, this fixed it)
+#progress,
+#buffer {
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+}
+
+#progress {
+  opacity: 1;
+  z-index: 15;
+  &[value] {
+  	-webkit-appearance: none;
+  	border: none;
+    z-index: 15;
+  }
+  &::-webkit-progress-value {
+    background-color: #F09C37;
+    height: 0.3em;
+    z-index: 15;
+  }
+  &::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+
+#buffer {
+  top: 0.2em;
+  z-index: 0;
+  &[value] {
+  	-webkit-appearance: none;
+  	border: none;
+    background: transparent;
+  }
+  &::-webkit-progress-value {
+    background-color: rgba(255, 255, 255, 0.4);
+    height: 0.3em;
+    top: -0.4em;
+    z-index: 0;
+  }
+  &::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.highlight {
+  color: #F09C37;
+}

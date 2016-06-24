@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  @extend %PrimaryFont;
+  background-color: $site-base-light-color;
+  color: $site-base-primary-color;
+}
+
+a {
+  color: $site-base-tertiary-color;
+  .current & {
+   color: $site-base-tertiary-color;
+   text-decoration: none;
+  }
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+.row {
+  padding: 10px;
+  background-color: $site-base-secondary-color;
+  margin: 0 auto;
+  @include desktop {
+    display: inline-block;
+    width: 100%
+  }
+}

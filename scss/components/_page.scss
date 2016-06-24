@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.video-box {
+  max-width: $max-video-width;
+  margin: 10px auto;
+  padding: 10px 5px;
+}
+
+.transcript-box {
+  max-width: $max-video-width;
+  margin: -70px auto;
+  p {
+    text-align: left;
+    padding: 10px 25px;
+    font-size: $standard-text;
+  }
+}
